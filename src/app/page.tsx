@@ -1,58 +1,25 @@
-'use client'
-
 import Image from "next/image";
-import { useEffect, useState } from 'react'
-import imgcapa from '../assets/capamenu.png'
 import { itens } from "@aw/lib/database";
-
+import Menu from "@aw/components/menu";
+import logotipo from '../assets/logotipo.png'
 
 export default function Home() {
-  const [sections, setSections] = useState([])
-
-  useEffect(() => {
-    // async function fetchSections() {
-      // const { data, error } = await supabase.from('cardapio').select('*')
-      // if (!error) setSections(data)
-    // }
-    // fetchSections()
-  }, [])
   
   return (
-    <div className="scroll-smooth">
-      {/* Barra de navegação fixa */}
-      <nav className="fixed top-0 w-full bg-white shadow z-50 flex justify-center gap-6 p-4">
-        {itens.map((cardapio) => (
-          <a
-            key={cardapio.id}
-            href={`#secao-${cardapio.categoria}`}
-            className="text-blue-600 hover:underline"
-          >
-            {cardapio.categoria}
-          </a>
-        ))}
-      </nav>
-
-      {/* Imagem de topo */}
-      <div className="mt-0">
-        <Image
-          src={imgcapa}
-          alt="Topo"
-          className="w-full h-64 object-cover"
-        />
+    <div className="scroll-smooth flex flex-col justify-center items-center">
+      <div className="fixed top-0 w-full">
+        <div className="flex flex-row h-20 gap-4 justify-center items-center bg-black text-white">
+          <Image src={logotipo} className="w-20 h-20" alt="Tio do Crepe" />
+        </div>
+        <nav className="w-full shadow flex justify-center gap-4 p-1 bg-blue-800 opacity-70">
+          <h1 className="font-bold text-2xl text-white">MENU</h1>
+        </nav>
       </div>
 
-      {/* Conteúdos das seções */}
-      <div className="p-8">
-        {itens.map((cardapio) => (
-          <section
-            key={cardapio.id}
-            id={`secao-${cardapio.categoria}`}
-            className="min-h-screen"
-          >
-            <h2 className="text-3xl font-bold">{cardapio.nome}</h2>
-            <p>{cardapio.descricao}</p>
-          </section>
-        ))}
+      <div className="flex flex-col justify-start items-start w-full h-full mt-28 p-1 md:p-4 lg:p-8">
+      <div className="flex flex-col w-full">
+        <Menu produtos={itens} />
+      </div>
       </div>
     </div>
   );

@@ -49,17 +49,17 @@ export default function Menu({ produtos }: MenuProps) {
                   <div className="flex flex-row gap-4 md:gap-8 lg:gap-16 items-center">
                     <div className="flex flex-col items-center text-blue-800">
                       <span className="font-medium">Só o crepe</span>
-                      <span className="font-medium">R$ {item.preco}</span>
+                      <span className="font-medium">R$ {item.valor_individual}</span>
                     </div>
                     <div className="flex flex-col items-center text-red-800">
                       <span className="font-medium">Combo</span>
-                      <span className="font-medium">R$ {item.combo}</span>
+                      <span className="font-medium">R$ {item.valor_combo}</span>
                     </div>
                   </div>
                   :
                   <div className="flex flex-row gap-4 md:gap-8 lg:gap-16 items-center">
                     <div className="flex flex-col items-center text-blue-800">
-                      <span className="text-right font-medium">R$ {item.preco}</span>
+                      <span className="text-right font-medium">R$ {item.valor_individual}</span>
                     </div>
                   </div>
                   }

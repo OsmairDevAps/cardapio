@@ -9,10 +9,7 @@ interface MenuProps {
 
 export default function Menu({ produtos }: MenuProps) {
   // Agrupar por categoria, mantendo o menor valor de ordem
-  const categoriasMap: Record<
-    string,
-    { ordem: number; itens: IItem[] }
-  > = produtos.reduce((acc, item) => {
+  const categoriasMap: Record<string, { ordem: number; itens: IItem[] }> = produtos.reduce((acc, item) => {
     if (!acc[item.categoria]) {
       acc[item.categoria] = {
         ordem: item.ordem,
@@ -46,22 +43,22 @@ export default function Menu({ produtos }: MenuProps) {
                     {item.descricao && <p className="text-sm text-gray-600">{item.descricao}</p>}
                   </div>
                   {item.categoria === 'CREPES' ?
-                  <div className="flex flex-row gap-4 md:gap-8 lg:gap-16 items-center">
-                    <div className="flex flex-col items-center text-blue-800">
-                      <span className="font-medium">Só o crepe</span>
-                      <span className="font-medium">R$ {item.valor_individual}</span>
+                    <div className="flex flex-row gap-4 md:gap-8 lg:gap-16 items-center">
+                      <div className="flex flex-col items-center text-blue-800">
+                        <span className="font-medium">Só o crepe</span>
+                        <span className="font-medium">R$ {item.valor_individual}</span>
+                      </div>
+                      <div className="flex flex-col items-center text-red-800">
+                        <span className="font-medium">Combo</span>
+                        <span className="font-medium">R$ {item.valor_combo}</span>
+                      </div>
                     </div>
-                    <div className="flex flex-col items-center text-red-800">
-                      <span className="font-medium">Combo</span>
-                      <span className="font-medium">R$ {item.valor_combo}</span>
+                    :
+                    <div className="flex flex-row gap-4 md:gap-8 lg:gap-16 items-center">
+                      <div className="flex flex-col items-center text-blue-800">
+                        <span className="text-right font-medium">R$ {item.valor_individual}</span>
+                      </div>
                     </div>
-                  </div>
-                  :
-                  <div className="flex flex-row gap-4 md:gap-8 lg:gap-16 items-center">
-                    <div className="flex flex-col items-center text-blue-800">
-                      <span className="text-right font-medium">R$ {item.valor_individual}</span>
-                    </div>
-                  </div>
                   }
 
                 </li>

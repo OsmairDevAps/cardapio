@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { itens } from "@aw/lib/database";
 import Menu from "@aw/components/menu";
-import logotipo from "@aw/assets/logotipo.png" 
+import logotipo from "@aw/assets/logotipo.png"
 import { supabase } from "@aw/lib/client";
 import { IItem } from "@aw/lib/interface";
 
@@ -13,22 +13,22 @@ export default function Home() {
 
   async function ListaCardapio() {
     try {
-      const {data, error} = await supabase
+      const { data, error } = await supabase
         .from('cardapios')
         .select('*')
-        .order('categoria', {ascending: true})
-        .order('nome', {ascending: true})
-      if(data) {
+        .order('categoria', { ascending: true })
+        .order('nome', { ascending: true })
+      if (data) {
         setProdutos(data)
       }
     } catch (error) {
-      console.log(error)      
+      console.log(error)
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     ListaCardapio()
-  },[])
+  }, [])
 
   return (
     <div className="scroll-smooth flex flex-col justify-center items-center">
@@ -42,9 +42,9 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col justify-start items-start w-full h-full mt-28 p-1 md:p-4 lg:p-8">
-      <div className="flex flex-col w-full">
-        <Menu produtos={produtos} />
-      </div>
+        <div className="flex flex-col w-full">
+          <Menu produtos={produtos} />
+        </div>
       </div>
     </div>
   );
